@@ -1,6 +1,7 @@
 @use 'variaveis';
 @use 'hero';
 @use 'shows';
+@use 'plans';
 
 @font-face {
     font-family: Avenir;
@@ -22,6 +23,7 @@
     border: none;
     outline: none;
     background: none;
+    list-style: none;
 }
 
 body {
