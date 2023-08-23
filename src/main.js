@@ -3,6 +3,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const tabsContainer = document.querySelectorAll('[data-tab-id]');
     const questions = document.querySelectorAll('[data-faq-question]');
 
+    const heroSection = document.querySelector('.hero');
+    const alturaHero = heroSection.clientHeight;
+
+    window.addEventListener('scroll', function() {
+        const posicaoAtual = window.scrollY;
+
+        if (posicaoAtual < alturaHero) {
+            ocultaElementosHeader();
+        } else {
+            exibeElementosHeader();
+        }
+    })
+
+    //Seção de atrações, programação das abas
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function(btn) {
             const abaAlvo = btn.target.dataset.tabButton;
@@ -11,15 +25,25 @@ document.addEventListener('DOMContentLoaded', function() {
             aba.classList.add('shows__list--is--active');
             removeBtnAtivo()
             btn.target.classList.add('shows__tabs__btn--is--active')
-            
         })
         
     }
 
+    //Seção FAQ, accordion
     for (let i = 0; i < questions.length; i++) {
         questions[i].addEventListener('click', abreOuFechaResposta);
     }
 })
+
+function ocultaElementosHeader() {
+    const header = document.querySelector('header');
+    header.classList.add('header--is-hidden');
+}
+
+function exibeElementosHeader() {
+    const header = document.querySelector('header');
+    header.classList.remove('header--is-hidden');
+}
 
 function abreOuFechaResposta(elemento) {
     const classe = 'faq__questions__item--is-open';
