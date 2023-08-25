@@ -3,10 +3,18 @@
 .shows {
     padding: 5.6vw;
     min-height: 50vw;
+    max-width: 2100px;
+    margin: 0 auto;
 
     &__tabs {
         display: flex;
         justify-content: center;
+
+        @media (max-width: 768px)  {
+            white-space: nowrap;
+            overflow-x: scroll;
+            padding-left: 20px;
+        }
 
         &__btn {
             color: variaveis.$corTextoSecundaria;
@@ -20,18 +28,25 @@
             &--is--active {
                 border-bottom: 5px solid variaveis.$corTextoSecundaria;
             }
+
+            @media (max-width: 768px) {
+                font-size: 16px;
+            }
         }
     }
 
     &__list {
         margin-top: 44px;
         display: none;
-        flex-wrap: wrap;
-        justify-content: center;
+        grid-template-columns: 1fr 1fr 1fr;
         gap: 24px;
 
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
         &--is--active {
-            display: flex;
+            display: grid;
         }
 
         &__item {
